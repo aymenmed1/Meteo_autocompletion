@@ -1,0 +1,275 @@
+body {
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: #FFB400;
+}
+
+#rechercheEtDate {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+    margin: 10px 10px;
+}
+
+#date {
+    background: #f5564e;
+    border-radius: 5px 5px;
+    margin: 10px;
+    padding: 5px;
+    color: #eeeeee;
+    position: relative;
+}
+
+#date::before {
+    position: absolute;
+    top: -20px;
+    left: -1px;
+    content: 'DATE';
+    color: #f5564e;
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+#dateHeure {
+    position: relative;
+}
+
+#heure {
+    position: absolute;
+    color: #FFF;
+    right: 0;
+    top: -20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#recherche {
+    margin-bottom: 10px;
+    width: 100%;
+    margin-right: 20px;
+}
+
+#listeVilles {
+    display: none;
+    position: absolute;
+    background: #eeeeee;
+    z-index: 9999;
+    margin: 0;
+    border: 1px solid silver;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+
+#resultats {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 15px;
+}
+
+#closeButton {
+    cursor: pointer;
+    position: absolute;
+    top: -14px;
+    right: -8px;
+    z-index: 99999;
+}
+
+#closeButton>svg {
+    background: #fff;
+}
+
+#meteoCarte {
+    width: 100%;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#carte {
+    height: 60vh;
+    width: 70vw;
+    border: 1px solid silver;
+    margin: 10px 200px;
+    border-radius: 5px;
+}
+
+#map {
+    height: 100%;
+}
+
+#meteo {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 30px 200px;
+    width: fit-content;
+}
+
+#chart {
+    position: relative;
+    width: 77vw;
+    height: 33vh;
+}
+
+
+/*************************** BACKGROUND  SELON LA TEMPERATURE**********************************/
+
+
+/*- de 0°*/
+
+.coverTransNeige {
+    width: 100vw;
+    display: block;
+    position: relative;
+}
+
+.coverTransNeige::after {
+    content: "";
+    background: url("img/neige.jpg");
+    background-size: cover;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+
+/*- de 10°*/
+
+.coverTransFroid {
+    width: 100vw;
+    display: block;
+    position: relative;
+}
+
+.coverTransFroid::after {
+    content: "";
+    background: url("img/moinsDeDix.jpg");
+    background-size: cover;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+
+/*- de 20°*/
+
+.coverTransMoyen {
+    width: 100vw;
+    display: block;
+    position: relative;
+}
+
+.coverTransMoyen::after {
+    content: "";
+    background: url("img/moinsDeVingt.png");
+    background-size: cover;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+
+/* + de 20°*/
+
+.coverTransChaud {
+    width: 100vw;
+    display: block;
+    position: relative;
+}
+
+.coverTransChaud::after {
+    content: "";
+    background: url("img/plusDeVingt.webp");
+    background-size: cover;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+
+/*************************** BACKGROUND ET AFFICHAGE SELON L'HEURE**********************************/
+
+.nightB {
+    background: linear-gradient(180deg, rgba(45, 61, 80, 1) 0%, rgba(45, 64, 80, 0.7553396358543417) 25%, rgba(45, 64, 80, 0.49763655462184875) 50%, rgba(255, 180, 0, 0.25) 75%, rgba(255, 180, 0, 0) 100%);
+}
+
+.night {
+    color: #FFB400;
+}
+
+.dayB {
+    background: linear-gradient(180deg, rgba(255, 180, 0, 1) 0%, rgba(255, 180, 0, 0.75) 25%, rgba(255, 180, 0, 0.5) 50%, rgba(45, 64, 80, 0.25) 75%, rgba(45, 61, 80, 0) 100%);
+}
+
+.day {
+    color: #2d4050;
+}
+
+
+/* MEDIA QUERY */
+
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 2rem;
+    }
+    #rechercheEtDate {
+        margin-top: 30px;
+        padding-top: 1px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    #heure {
+        right: 0;
+        top: -17px;
+        font-size: 0.8rem;
+    }
+    #divRecherche {
+        margin-bottom: 10px;
+        margin-right: 0;
+        width: 67%;
+    }
+    #meteoCarte {
+        flex-wrap: wrap;
+    }
+    #newMap {
+        height: 280px;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    #weatherDiv {
+        width: 100%;
+    }
+}
